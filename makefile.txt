@@ -1,0 +1,13 @@
+all: unionfind
+
+unionfind: main.o unionfind.o
+    gcc -o unionfind main.o unionfind.o
+
+main.o: main.c
+    gcc -c main.c
+
+unionfind.o: unionfind.asm
+    nasm -f elf64 unionfind.asm -o unionfind.o
+
+clean:
+    rm -f *.o unionfind
